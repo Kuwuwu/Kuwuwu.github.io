@@ -6,6 +6,9 @@ on:
     types: [opened, edited]
   schedule:
     - cron: "0 16 * * *"
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     
 jobs:
   build:
@@ -19,7 +22,7 @@ jobs:
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Get config.json
         run: |
@@ -29,7 +32,7 @@ jobs:
           sudo apt-get install jq
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: 3.8
 
